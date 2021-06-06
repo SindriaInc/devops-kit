@@ -1,12 +1,18 @@
-# Pipeline
+# DevOps Kit
 
-This tiny and basic image can be used for run all serverless routine steps.
+This tiny and basic image can be used for minimal devops environment ready out of the box.
 
 Installed packages:
 
 - bash
 - curl
+- wget  
+- vim  
 - rsync
+- make
+- openssh-client  
 - git
 - docker-cli
-- cowsay
+- docker-compose
+- kubectl
+- awscli
