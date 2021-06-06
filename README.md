@@ -6,6 +6,7 @@ Installed packages:
 
 - bash
 - curl
+- openssl  
 - wget  
 - vim  
 - rsync

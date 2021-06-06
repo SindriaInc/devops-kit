@@ -46,6 +46,7 @@ RUN apk update && \
     libc-dev \
     make \
     build-base \
+    openssl \
     ca-certificates && \
     rm -rf /var/cache/apk/*
 
