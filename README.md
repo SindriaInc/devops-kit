@@ -10,9 +10,12 @@ Installed packages:
 - vim  
 - rsync
 - make
+- gcc  
 - openssh-client  
 - git
 - docker-cli
 - docker-compose
 - kubectl
+- helm
+- sops  
 - awscli

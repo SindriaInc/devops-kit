@@ -45,7 +45,8 @@ RUN apk update && \
     gcc \
     libc-dev \
     make \
-    build-base && \
+    build-base \
+    ca-certificates && \
     rm -rf /var/cache/apk/*
 
 USER ${SINDRIA_USER}
@@ -62,5 +63,17 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/
     apk update && \
     apk add docker-cli docker-compose && \
     rm -rf /var/cache/apk/*
+
+# Install kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" && \
+    echo "$(<kubectl.sha256) kubectl" | sha256sum --check && \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    kubectl version --client
+
+# Install Helm
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
+    chmod 700 get_helm.sh && \
+    ./get_helm.sh
 
 SHELL ["/bin/bash", "-c"]
